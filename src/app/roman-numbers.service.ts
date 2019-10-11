@@ -8,31 +8,55 @@ export class RomanNumbersService {
   constructor() { }
 
   public arabicToRoman(arabic) {
-    let romanNumber = '';
-    if (arabic <= 10) {
-      romanNumber = this.getPrincipalNumber(arabic);
-    }
-    if (arabic > 10 && arabic <= 39) {
-      const firstNumber = Number(arabic.toString().charAt(0));
-      const indexSecond = Number(arabic.toString().charAt(1));
-      if (firstNumber === 1 || indexSecond === 0) {
-        romanNumber = 'X';
-      }
-      if (firstNumber === 2 && indexSecond !== 0 || firstNumber === 3 && indexSecond === 0) {
-        romanNumber = 'XX';
-      }
-      if (firstNumber === 3 && indexSecond !== 0) {
-        romanNumber = 'XXX';
-      }
-      const secondNumber = this.arabicToRoman(indexSecond);
-      romanNumber = romanNumber.concat(secondNumber);
-    }
+    let arabicNumber = '';
+    const principalNumbers = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
-    return romanNumber;
-  }
-
-  getPrincipalNumber(number) {
-    const principalNumbers = ['X', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
-    return principalNumbers[number];
+    if (arabic >= 1000) {
+      for (let i = arabic; i >= 1000; i = i - 1000) {
+        arabicNumber = arabicNumber.concat('M');
+        arabic = arabic - 1000;
+      }
+    }
+    if (arabic >= 900) {
+      arabicNumber = arabicNumber.concat('CM');
+      arabic = arabic - 900;
+    }
+    if (arabic >= 500) {
+      arabicNumber = arabicNumber.concat('D');
+      arabic = arabic - 500;
+    }
+    if (arabic >= 400) {
+      arabicNumber = arabicNumber.concat('CD');
+      arabic = arabic - 400;
+    }
+    if (arabic >= 100) {
+      for (let i = arabic; i >= 100; i = i - 100) {
+        arabicNumber = arabicNumber.concat('C');
+        arabic = arabic - 100;
+      }
+    }
+    if (arabic >= 90) {
+      arabicNumber = arabicNumber.concat('XC');
+      arabic = arabic - 90;
+    }
+    if (arabic >= 50) {
+      arabicNumber = arabicNumber.concat('L');
+      arabic = arabic - 50;
+    }
+    if (arabic >= 40) {
+      arabicNumber = arabicNumber.concat('XL');
+      arabic = arabic - 40;
+    }
+    if (arabic >= 10) {
+      for (let i = arabic; i >= 10; i = i - 10) {
+        arabicNumber = arabicNumber.concat('X');
+        arabic = arabic - 10;
+      }
+    }
+    if (arabic < 10) {
+      arabicNumber = arabicNumber.concat(principalNumbers[arabic]);
+      arabic = arabic - arabic;
+    }
+    return arabicNumber;
   }
 }

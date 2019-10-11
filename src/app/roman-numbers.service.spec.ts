@@ -49,4 +49,32 @@ describe('RomanNumbersService', () => {
     const service: RomanNumbersService = TestBed.get(RomanNumbersService);
     expect(service.arabicToRoman(35)).toEqual('XXXV');
   });
+  it('46 >>  XLVI', () => {
+    const service: RomanNumbersService = TestBed.get(RomanNumbersService);
+    expect(service.arabicToRoman(46)).toEqual('XLVI');
+  });
+  it('80 >>  LXXX', () => {
+    const service: RomanNumbersService = TestBed.get(RomanNumbersService);
+    expect(service.arabicToRoman(80)).toEqual('LXXX');
+  });
+  it('240 >>  CCXL', () => {
+    const service: RomanNumbersService = TestBed.get(RomanNumbersService);
+    expect(service.arabicToRoman(240)).toEqual('CCXL');
+  });
+  it('539 >>  DXXXIX', () => {
+    const service: RomanNumbersService = TestBed.get(RomanNumbersService);
+    expect(service.arabicToRoman(539)).toEqual('DXXXIX');
+  });
+  it('783 >>  DCCLXXXIII', () => {
+    const service: RomanNumbersService = TestBed.get(RomanNumbersService);
+    expect(service.arabicToRoman(783)).toEqual('DCCLXXXIII');
+  });
+  it('997 >>  CMXCVII', () => {
+    const service: RomanNumbersService = TestBed.get(RomanNumbersService);
+    expect(service.arabicToRoman(997)).toEqual('CMXCVII');
+  });
+  it('1000 >>  M', () => {
+    const service: RomanNumbersService = TestBed.get(RomanNumbersService);
+    expect(service.arabicToRoman(1000)).toEqual('M');
+  });
 });

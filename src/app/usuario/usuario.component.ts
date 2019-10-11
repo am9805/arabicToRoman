@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RomanNumbersService } from '../roman-numbers.service';
 
 @Component({
   selector: 'app-usuario',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioComponent implements OnInit {
   public usuarioActivo: boolean;
-  constructor() { }
+  constructor(private romanS: RomanNumbersService) { }
 
   ngOnInit() {
+    console.log(this.romanS.arabicToRoman('54'));
+
   }
 
   activarUsuario(): void {
